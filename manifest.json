@@ -1,0 +1,47 @@
+{
+  "name": "Nano Actions",
+  "description": "Discover innovative ways to take notes and enhance your productivity with Gemini Nano, the built-in AI model for Google Chrome.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": [
+        "src/styles/nano-actions.css"
+      ],
+      "js": [
+        "src/content.js",
+        "src/utils/content/ai.js",
+        "src/utils/content/checks.js",
+        "src/utils/content/storage.js",
+        "src/utils/notification/notification.js"
+      ],
+      "type": "module"
+    }
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "scripting",
+    "identity",
+    "declarativeNetRequest",
+    "activeTab"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "oauth2": {
+    "client_id": "{YOUR TOKEN GOES HERE}",
+    "scopes": [
+      "https://www.googleapis.com/auth/documents"
+    ]
+  }
+}
